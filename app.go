@@ -4,7 +4,7 @@ import (
 	"os"
 	"log"
 
-	"github.com/joho/godotenv"
+	_ "github.com/joho/godotenv/autoload"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/bradscottwhite/go-postgres-api/database"
@@ -30,11 +30,6 @@ func getPort() string {
 }
 
 func main() {
-	envErr := godotenv.Load()
-	if envErr != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	database.ConnectDb()
 	app := fiber.New()
 
