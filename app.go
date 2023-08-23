@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"log"
 
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/gofiber/fiber/v2"
