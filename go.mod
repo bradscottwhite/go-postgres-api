@@ -1,4 +1,4 @@
-module gorm-postgres
+module go-postgres-api
 
 go 1.18
 
