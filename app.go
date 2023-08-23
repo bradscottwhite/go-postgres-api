@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	_ "github.com/joho/godotenv/autoload"
+//	_ "github.com/joho/godotenv/autoload"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/bradscottwhite/go-postgres-api/database"

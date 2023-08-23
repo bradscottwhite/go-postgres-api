@@ -4,7 +4,6 @@ go 1.21
 
 require (
 	github.com/gofiber/fiber/v2 v2.42.0
-	github.com/joho/godotenv v1.5.1
 	gorm.io/driver/postgres v1.5.2
 	gorm.io/gorm v1.25.4
 )
