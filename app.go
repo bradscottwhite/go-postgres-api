@@ -2,7 +2,7 @@ package main
 
 import (
 	"os"
-	"fmt"
+	"log"
 
 	"github.com/joho/godotenv"
 	"github.com/gofiber/fiber/v2"
@@ -30,10 +30,9 @@ func getPort() string {
 }
 
 func main() {
-	envErr := godotenv.Load(".env")
+	envErr := godotenv.Load()
 	if envErr != nil {
-		fmt.Println("Could not load env vars")
-		os.Exit(1)
+		log.Fatal("Error loading .env file")
 	}
 
 	database.ConnectDb()
