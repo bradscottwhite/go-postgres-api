@@ -2,6 +2,9 @@ package database
 
 import (
 	"log"
+	"fmt"
+	"os"
+	"github.com/joho/godotenv"
 
 	"github.com/bradscottwhite/go-postgres-api/models"
 	"gorm.io/driver/postgres"
@@ -15,11 +18,32 @@ type Dbinstance struct {
 
 var DB Dbinstance
 
+func getEnvVar(key string) string {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Error loading .env file", err)
+	}
+	return os.Getenv(key)
+}
+
 // connectDb
 func ConnectDb() {
-	dsn := "host=localhost user=postgres password='' dbname=go-db port=5432 sslmode=disable" // TimeZone=Asia/Shanghai"
+	var (
+		host	 = getEnvVar("DB_HOST")
+		port	 = getEnvVar("DB_PORT")
+		user	 = getEnvVar("DB_USER")
+		dbname	 = getEnvVar("DB_NAME")
+		password = getEnvVar("DB_PASSWORD")
+	)
+	conn := fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=disable",
+		host,
+		port,
+		user,
+		dbname,
+		password,
+	)
 
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+	db, err := gorm.Open(postgres.Open(conn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
 	})
 
