@@ -33,7 +33,7 @@ func ConnectDb() {
 		password,
 	)
 
-	fmt.printf("Connection: %f", conn)
+	fmt.Printf("Connection: %q", conn)
 
 	db, err := gorm.Open(postgres.Open(conn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
