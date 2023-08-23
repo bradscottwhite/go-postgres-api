@@ -48,5 +48,5 @@ func main() {
 		return c.SendStatus(404) // => 404 "Not Found"
 	})
 
-	log.Fatal(getPort())
+	app.Listen(getPort())
 }
