@@ -3,6 +3,8 @@ package database
 import (
 	"log"
 	"os"
+	"fmt"
+	"github.com/joho/godotenv"
 
 	"github.com/bradscottwhite/go-postgres-api/models"
 	"gorm.io/driver/postgres"
@@ -18,6 +20,12 @@ var DB Dbinstance
 
 // connectDb
 func ConnectDb() {
+	envErr := godotenv.Load(".env")
+	if envErr != nil {
+		fmt.Println("Could not load env vars")
+		os.Exit(1)
+	}
+
 	var (
 		host	 = os.Getenv("DB_HOST")
 		port	 = os.Getenv("DB_PORT")

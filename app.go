@@ -23,12 +23,9 @@ func setUpRoutes(app *fiber.App) {
 func getPort() string {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = ":3000"
-	} else {
-		port = ":" + port
+		port = "3000"
 	}
-
-	return port
+	return ":" + port
 }
 
 func main() {
